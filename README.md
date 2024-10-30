@@ -1,0 +1,1 @@
+# full_vue_vite_symfony_project
