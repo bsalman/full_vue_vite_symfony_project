@@ -1,5 +1,24 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import { onMounted, ref } from "vue";
+import axios from "axios";
+
+onMounted(async () => {
+  await axios.get("/api/test").then((response) => {
+    console.log(response);
+  });
+  await axios
+    .post("/api/form", {
+      firstName: "Fred",
+      lastName: "Flintstone"
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
 </script>
 
 <template>
@@ -11,7 +30,6 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
